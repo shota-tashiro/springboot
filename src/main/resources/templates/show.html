@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${title}"></title>
+  
+　　<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+</head>
+<body>
+ 	<div class="text-center p-4">
+ 		<h2 th:text="${headLine}"></h2>
+ 		<div th:object="${inquiryShow}">
+	 		<p>ID:<span th:text="*{id}"></span></p>
+	 		<p>名前：<span th:text="*{name}"></span></p>
+	 		<p>メールアドレス:<span th:text="*{email}"></span></p>
+	 		<p>問い合わせ内容：<span th:text="*{text}"></span></p>
+ 		</div>
+ 		
+ 		<form action="#" th:action="@{/{id}/edit(id=*{id})}" th:method="get">
+ 			<button type="submit">編集</button>
+ 		</form>
+ 		<form action="#" th:action="@{/{id}(id=*{id})}" th:method="delete">
+ 			<button type="submit">削除</button>
+ 		</form>
+ 	</div>
+ 	<!-- Bootstrapの設定 -->
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <!-- Bootstrapの設定 -->
+    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${title}"></title>
+  
+　　<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+  
+</head>
+<body>
+<div class="text-center p-4">
+	<h2 th:text="${text}"></h2>
+	<div th:object="${inquiryForm}">
+	
+		<div >
+			<p>名前：<span th:text="*{name}"></span></p>
+			<p>メールアドレス：<span th:text="*{email}"></span></p>
+			<p>お問い合わせ:<span th:text="*{text}"></span></p>	
+		</div>
+		
+		<form action="#" th:action="@{index}" method = "post">
+			<input type = "hidden" name = "name" th:value="*{name}">
+			<input type = "hidden" name = "email" th:value="*{email}">
+			<input type = "hidden" name = "text" th:value="*{text}">
+			<button type = "submit">送信</button>
+		</form>
+		<form action="#" th:action="@{form}" method = "post">
+			<input type = "hidden" name = "name" th:value="*{name}">
+			<input type = "hidden" name = "email" th:value="*{email}">
+			<input type ="hidden" name = "text" th:value="*{text}">
+			<button type = "submit">戻る</button>
+		</form>
+	</div>
+</div>
+<!-- Bootstrapの設定 -->
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <!-- Bootstrapの設定 -->
+    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+</body>
+</html>            <!--  -->
+
+
+<!--  -->

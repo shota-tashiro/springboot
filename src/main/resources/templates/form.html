@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title th:text="${title}"></title>
+  
+　　<link rel="stylesheet" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}">
+</head>
+<body>
+  <div class="text-center p-4">
+  	<h3 th:text="${headLine}"></h3>
+  	
+  	<form action="#" th:action="@{confirm}" method="post" th:object="${inquiryForm}">
+  			<div class="form-group" th:classappend="${#fields.hasErrors('name')}? has-error">
+			<label for = "name">名前</label><br>
+			<input type = "text" id = "name" name ="name" th:value="*{name}" class="form-control">
+			<p class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></p>
+			</div>
+			
+			<div class="form-group" th:classappend="${#fields.hasErrors('email')}? has-error">
+			<label for = "email">メースアドレス</label><br>
+			<input type = "text" id = "email" name = "email" th:value="*{email}" class="form-control">
+			<p class="text-danger" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+			</div>
+			
+			<div class="form-group" th:classappend="${#fields.hasErrors('text')}? has-error">
+			<label for ="text">お問い合わせ</label><br>
+			<textarea rows="4" cols="20" id = "text" name = "text" th:field="*{text}" class="form-control"></textarea>
+			<p class="text-danger" th:if="${#fields.hasErrors('text')}" th:errors="*{text}"></p>
+			</div>
+			
+			<button type = "submit">確認</button>
+  	</form>
+  	
+  	<a th:href="@{index}">お問い合わせ一覧へ</a>
+  </div>
+  <!-- Bootstrapの設定 -->
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <!-- Bootstrapの設定 -->
+    <script th:src="@{/webjars/bootstrap/4.3.1/js/bootstrap.min.js}"></script>
+</body>
+</html>
